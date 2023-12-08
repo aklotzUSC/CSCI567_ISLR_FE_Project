@@ -3,7 +3,7 @@
 import sys
 import cv2
 import os
-from sys import platform
+
 import argparse
 import numpy as np
 import json
