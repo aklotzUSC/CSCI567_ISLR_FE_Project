@@ -5,7 +5,7 @@ Start by running 'pip install -r requirements.txt' to install requirements.
 ### Keypoint Extraction
 
 As keypoint extraction is heavy on computing and ram, and openpose's instructions and files are outdated making it hard to get working,
-the processed keypoints have been provided in the form of the WLASL200_mediapipe.pkl and WLASL200_openpose.pkl files. If you'd like to generate
+the processed keypoints can be directly downloaded at https://drive.google.com/drive/folders/1jP6KQvXn5VvXx9vEAmicUHwCWMt9CTp-. If you'd like to generate
 these files yourself, below are instructions.
 
 The complete preprocessed dataset was provided by the author of the WLASL dataset via drive at https://drive.google.com/file/d/11eFE_quM2_2-h3H_zTTjq0i0D6pkx62Z/view.
