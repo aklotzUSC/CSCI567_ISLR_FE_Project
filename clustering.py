@@ -6,7 +6,8 @@ from mpl_toolkits.mplot3d import Axes3D
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from plotly.subplots import make_subplots
-from sklearn.cluster import KMeans
+from sklearn.cluster import KMeans, SpectralClustering, AgglomerativeClustering
+from sklearn.mixture import GaussianMixture
 from tqdm.notebook import tqdm
 tqdm.pandas()
 import pickle
@@ -92,7 +93,7 @@ plt.show()
 
 num_clusters = max_clusters  # Change this to the desired number of clusters
 
-def cluster_column(data, num_clusters):
+def cluster_column_kmeans(data, num_clusters):
 
     reshaped_data = data[:,:,:2].reshape(data.shape[0], -1)
 
@@ -118,10 +119,97 @@ def cluster_column(data, num_clusters):
     sorted_centroids = np.array([item[0] for item in sorted_data])
     return sorted_centroids
 
+def cluster_column_gmm(data, num_clusters):
+
+    reshaped_data = data[:,:,:2].reshape(data.shape[0], -1)
+
+    #----------------------
+    #### Cluster Begin
+    #----------------------
+    gmm = GaussianMixture(n_components=num_clusters, random_state=42)
+    cluster_labels = gmm.fit_predict(reshaped_data)
+    # Get Centroids
+    centroids = gmm.means_
+    #----------------------
+    #### Cluster End
+    #----------------------
+    
+    centroids_reshaped = centroids.reshape(num_clusters, data.shape[1], 2)
+    # Sort centroids
+    original_order = np.arange(len(data))
+    valid_indices = np.arange(min(len(original_order), num_clusters))
+    # Arrage with Cluster labels
+    combined_data = [(centroids_reshaped[i], cluster_labels[i], original_order[i]) for i in valid_indices]
+    sorted_data = sorted(combined_data, key=lambda x: x[2])
+    # Extract sorted centroids
+    sorted_centroids = np.array([item[0] for item in sorted_data])
+    return sorted_centroids
+
+
+def cluster_column_spectral(data, num_clusters):
+
+    reshaped_data = data[:,:,:2].reshape(data.shape[0], -1)
+
+    #----------------------
+    #### Cluster Begin
+    #----------------------
+    spectral = SpectralClustering(n_clusters=num_clusters, assign_labels='cluster_qr', random_state=42, n_jobs=-1)
+    cluster_labels = spectral.fit_predict(reshaped_data)
+    # Get Centroids
+    centroids = []
+    for cluster_label in range(num_clusters):
+        cluster_data = reshaped_data[cluster_labels == cluster_label]
+        cluster_centroid = np.mean(cluster_data, axis=0)
+        centroids.append(cluster_centroid)
+    #----------------------
+    #### Cluster End
+    #----------------------
+    
+    centroids_reshaped = np.array(centroids).reshape(num_clusters, data.shape[1], 2)
+    # Sort centroids
+    original_order = np.arange(len(data))
+    valid_indices = np.arange(min(len(original_order), num_clusters))
+    # Arrage with Cluster labels
+    combined_data = [(centroids_reshaped[i], cluster_labels[i], original_order[i]) for i in valid_indices]
+    sorted_data = sorted(combined_data, key=lambda x: x[2])
+    # Extract sorted centroids
+    sorted_centroids = np.array([item[0] for item in sorted_data])
+    return sorted_centroids
+
+def cluster_column_agglomerative(data, num_clusters):
+
+    reshaped_data = data[:,:,:2].reshape(data.shape[0], -1)
+
+    #----------------------
+    #### Cluster Begin
+    #----------------------
+    agglo = AgglomerativeClustering(n_clusters=num_clusters, affinity='euclidean', linkage='ward')
+    cluster_labels = agglo.fit_predict(reshaped_data)
+    # Get Centroids
+    centroids = []
+    for cluster_label in range(num_clusters):
+        cluster_data = reshaped_data[cluster_labels == cluster_label]
+        cluster_centroid = np.mean(cluster_data, axis=0)
+        centroids.append(cluster_centroid)
+    #----------------------
+    #### Cluster End
+    #----------------------
+    
+    centroids_reshaped = np.array(centroids).reshape(num_clusters, data.shape[1], 2)
+    # Sort centroids
+    original_order = np.arange(len(data))
+    valid_indices = np.arange(min(len(original_order), num_clusters))
+    # Arrage with Cluster labels
+    combined_data = [(centroids_reshaped[i], cluster_labels[i], original_order[i]) for i in valid_indices]
+    sorted_data = sorted(combined_data, key=lambda x: x[2])
+    # Extract sorted centroids
+    sorted_centroids = np.array([item[0] for item in sorted_data])
+    return sorted_centroids
+
 # Apply clustering for 'pose', 'face', and 'hands' columns
-dk['pose_clustered'] = [cluster_column(dk['pose'][i], num_clusters) for i in tqdm(range(len(dk)))]
-dk['face_clustered'] = [cluster_column(dk['face'][i], num_clusters) for i in tqdm(range(len(dk)))]
-dk['hands_clustered'] = [cluster_column(dk['hands'][i], num_clusters) for i in tqdm(range(len(dk)))]
+dk['pose_clustered'] = [cluster_column_kmeans(dk['pose'][i], num_clusters) for i in tqdm(range(len(dk)))]
+dk['face_clustered'] = [cluster_column_kmeans(dk['face'][i], num_clusters) for i in tqdm(range(len(dk)))]
+dk['hands_clustered'] = [cluster_column_kmeans(dk['hands'][i], num_clusters) for i in tqdm(range(len(dk)))]
 
 dhand = dk[['hands_clustered', 'label']]
 dpose = dk[['pose_clustered', 'label']]
