@@ -136,7 +136,7 @@ if __name__ == '__main__':
 
     words = []
     for i in range(processed_count):
-        h = f'Numpy_new/{i}.npy'
+        h = f'numpy_openpose/{i}.npy'
         hh = np.load(h)
         words.append(hh)
 
