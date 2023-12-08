@@ -108,6 +108,9 @@ def extract_save(input_path, start, end, vid_idx):
     np.save(npy_path, npyArray)
 
 if __name__ == '__main__':
+    if not os.path.isdir('numpy_mediapipe'):
+        os.mkdir('numpy_mediapipe')
+
     with open('WLASL_v0.3.json', 'r') as json_file:
         data = json.load(json_file)
 
