@@ -11,6 +11,7 @@ import mediapipe as mp
 #CHANGE THIS TO DIRECTORY OF VIDEO FILES
 vid_dir = 'videos/WLASL2000'
 
+#Change this to change how many glosses should be processed.
 MAX_GLOSS_COUNT = 200
 
 def detect_landmarks(frame):
@@ -148,7 +149,7 @@ if __name__ == '__main__':
 
     words = []
     for i in range(processed_count):
-        h = f'Numpy_new/{i}.npy'
+        h = f'numpy_mediapipe/{i}.npy'
         hh = np.load(h)
         words.append(hh)
 
@@ -170,7 +171,7 @@ if __name__ == '__main__':
     for i in range(len(pose)):
         pose[i] = np.array(pose[i])
 
-        #25 body, 21 left hand, 21 right hand, 70 face; Total: 137
+    #33 body, 21 left hand, 21 right hand, 468 face; Total: 543
     dk = pd.DataFrame({'face': face, 'hands': hands, 'pose': pose, 'label': gloss_list[:processed_count]})
 
     dk.to_pickle("WLASL" + str(gloss_count) + "_mediapipe.pkl")

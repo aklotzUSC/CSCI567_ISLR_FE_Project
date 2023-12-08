@@ -15,6 +15,7 @@ dir = 'C:\\Users\\andre\\Documents\\School\\USC\\CSCI 567\\Project\\'
 #CHANGE THIS TO DIRECTORY OF VIDEO FILES
 vid_dir = 'videos/WLASL2000'
 
+#Change this to change how many glosses should be processed.
 MAX_GLOSS_COUNT = 200
 
 # Windows Import
@@ -161,7 +162,7 @@ if __name__ == '__main__':
     for i in range(len(pose)):
         pose[i] = np.array(pose[i])
 
-        #25 body, 21 left hand, 21 right hand, 70 face; Total: 137
+    #25 body, 21 left hand, 21 right hand, 70 face; Total: 137
     dk = pd.DataFrame({'face': face, 'hands': hands, 'pose': pose, 'label': gloss_list[:processed_count]})
 
     dk.to_pickle("WLASL" + str(gloss_count) + "_openpose.pkl")

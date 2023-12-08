@@ -10,12 +10,18 @@ tqdm.pandas()
 import warnings
 warnings.filterwarnings("ignore")
 
-#Can change to a value <= 200. If you processed a dataset larger than WLASL200, first change line 29 to the correct size.
+#Size of the processed dataset
 dataset_size = 200
 
-#Comment one of these lines out
+#Amount of glosses to use. Must be less than or equal to dataset_size
+glosses_to_use = 200
+
+#Comment one of these lines out to choose wheter to use mediapipe or openpose data
 #keypoint_system = 'mediapipe'
 keypoint_system = 'openpose'
+
+#Will train a model for each of the various top_k metrics listed below.
+k_options = [1, 3, 5, 10]
 
 hand_keypoint_count = 21 * 2 * 2
 
@@ -26,7 +32,7 @@ else:
     pose_keypoint_count = 25 * 2
     face_keypoint_count = 70 * 2
 
-X = pd.read_pickle('WLASL200_' + keypoint_system + '.pkl')
+X = pd.read_pickle('WLASL' + str(dataset_size) + '_' + keypoint_system + '.pkl')
 Y = X['label']
 X = X.drop(columns=['label'])
 example_count = len(X)
@@ -65,7 +71,7 @@ y_series = pd.Series(Y)
 class_frequencies = y_series.value_counts()
 
 # Identify the dataset_size most frequent glosses
-selected_count = sum(class_frequencies[:dataset_size])
+selected_count = sum(class_frequencies[:glosses_to_use])
 
 # Filter X and Y based on selected classes
 hands = hands[:selected_count]
@@ -86,12 +92,12 @@ label_encoder = label_encoder.fit(y_train)
 y_train_encoded = label_encoder.transform(y_train)
 y_test_encoded = label_encoder.transform(y_test)
 
-for k_option in [1, 3, 5, 10]:
+for k_option in k_options:
     model = tf.keras.Sequential([
-        tf.keras.layers.Conv1D(8, kernel_size=4, activation='relu', input_shape=(max_frame_count, hand_keypoint_count + pose_keypoint_count + face_keypoint_count)),
+        tf.keras.layers.Conv1D(64, kernel_size=4, activation='relu', input_shape=(max_frame_count, hand_keypoint_count + pose_keypoint_count + face_keypoint_count)),
         tf.keras.layers.MaxPooling1D(pool_size=3),
         tf.keras.layers.Flatten(),
-        tf.keras.layers.Dense(16, activation='relu'),
+        tf.keras.layers.Dense(128, activation='relu'),
         tf.keras.layers.Dense(len(label_encoder.classes_), activation='softmax')
     ])
 
