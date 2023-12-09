@@ -1,4 +1,4 @@
-# CSCI567_ISLR_FE_Project
+# IMPROVING DYNAMIC GESTURE FEATURE EXTRACTION FOR WORD LEVEL AMERICAN SIGN LANGUAGE RECOGNITION
 
 Start by running `pip install -r requirements.txt` to install requirements.
 
