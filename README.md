@@ -47,9 +47,9 @@ Both openpose_keypoints.py and mediapipe_keypoints.py process videos for the top
 Follow instructions in clustering.py, obtain X_train_flat, X_test_flat, X_train_cood, X_test_cood, y_train and y_test
 
 <p align="center">
-  <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/1.2orig.png" align="left" width="150">
-  <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/2.2clus.png" width="150">
-  <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/3.2cent.png" align="right" width="150">
+  <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/1.2orig.png" align="left" width="180">
+  <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/2.2clus.png" width="180">
+  <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/3.2cent.png" align="right" width="180">
 </p>
 
 
