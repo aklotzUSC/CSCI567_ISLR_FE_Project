@@ -1,4 +1,5 @@
 # Improving Dynamic Gesture Feature Extraction for Word Level American Sign Language Recognition
+Authors: Andrew Klotz, Aniket Modi, Mithesh Ramachandran & Sidh Satam
 
 ## Abstract
 
