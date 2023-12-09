@@ -21,6 +21,8 @@ As keypoint extraction is heavy on computing and RAM, and openpose's instruction
 the processed keypoints can be directly downloaded at https://drive.google.com/drive/folders/1jP6KQvXn5VvXx9vEAmicUHwCWMt9CTp-. If you'd like to generate
 these files yourself, below are instructions.
 
+![An example of keypoints extracted using MediaPipe](https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/StackedGestures.png)
+
 The complete preprocessed dataset was provided by the author of the WLASL dataset via drive at https://drive.google.com/file/d/11eFE_quM2_2-h3H_zTTjq0i0D6pkx62Z/view.
 In order to download the videos and preprocess them yourself you can follow the instructions at WLASL's github https://github.com/dxli94/WLASL, though note
 this was attempted in this project and foregone due to many of the original sources of the videos not being available.
