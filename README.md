@@ -55,6 +55,10 @@ Follow instructions in clustering.py, obtain X_train_flat, X_test_flat, X_train_
 
 _An example of clustering on Body pose points_
 
+- Left: Body pose keypoints for a sign (X x Y x Frames)
+- Centre: Clusters
+- Right: Cluster Centroids replacing the keypoints
+
 ### Model training and Evaluation
 
 Follow instructions in best_models.py
