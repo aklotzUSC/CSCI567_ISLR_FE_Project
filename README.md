@@ -1,5 +1,16 @@
 # IMPROVING DYNAMIC GESTURE FEATURE EXTRACTION FOR WORD LEVEL AMERICAN SIGN LANGUAGE RECOGNITION
 
+## Abstract
+
+_Modern machine learning-based Sign Language Recognition (SLR) techniques
+suffer from undersized datasets and extremely large amounts of data per example,
+which often leads to high overfitting and low accuracy of trained models. This
+paper explores various feature extraction methods on input data to classification
+models to see if they can mitigate these problems. We research the effects of
+clustering the data, performing dimensionality reduction, and data augmentation.
+Among those methods, standardization through clustering can potentially signifi-
+cantly increase a model’s performance._
+
 Start by running `pip install -r requirements.txt` to install requirements.
 
 ### Keypoint Extraction
