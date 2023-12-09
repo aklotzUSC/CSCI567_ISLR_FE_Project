@@ -42,6 +42,10 @@ If you have openpose installed correctly, change the location of dir in openpose
 
 Both openpose_keypoints.py and mediapipe_keypoints.py process videos for the top 200 glosses. If you'd like to process for a different number, change the MAX_GLOSS_COUNT variable. The complete WLASL dataset has 2000 glosses.
 
-### Clustering
+### Clustering and Dimensionality Reduction
 
 Follow instructions in clustering.py, obtain X_train_flat, X_test_flat, X_train_cood, X_test_cood, y_train and y_test
+
+### Model training and Evaluation
+
+Follow instructions in best_models.py
