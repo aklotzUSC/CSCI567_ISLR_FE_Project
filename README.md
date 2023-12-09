@@ -59,6 +59,8 @@ _An example of clustering on Body pose points_
 - Centre: Clusters
 - Right: Cluster Centroids replacing the keypoints
 
+Refer data_visualization.py
+
 ### Model training and Evaluation
 
 Follow instructions in best_models.py
