@@ -41,3 +41,7 @@ Below is a list of issues ran into when attempting to install openpose on Window
 If you have openpose installed correctly, change the location of dir in openpose_keypoints.py to where openpose was downloaded and vid_dir to the location of your video directory. Note that the program assumes you utilized openpose/build as the directory you generate into when using cmake-GUI during openpose installation as given as default. If you changed the name of your build location, you will need to adjust lines 20-24 to account for the difference in directory names.
 
 Both openpose_keypoints.py and mediapipe_keypoints.py process videos for the top 200 glosses. If you'd like to process for a different number, change the MAX_GLOSS_COUNT variable. The complete WLASL dataset has 2000 glosses.
+
+### Clustering
+
+Follow instructions in clustering.py, obtain X_train_flat, X_test_flat, X_train_cood, X_test_cood, y_train and y_test
