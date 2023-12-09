@@ -44,8 +44,7 @@ Both openpose_keypoints.py and mediapipe_keypoints.py process videos for the top
 
 ### Clustering and Dimensionality Reduction
 
-Follow instructions in clustering.py, obtain X_train_flat, X_test_flat, X_train_cood, X_test_cood, y_train and y_test
-
+Follow the instructions in `clustering.py`, to obtain `X_train_flat`, `X_test_flat`, `X_train_cood`, `X_test_cood`, `y_train`, and `y_test` pkl files.
 <p align="center">
   <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/1.2orig.png" align="left" width="230">
   <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/2.2clus.png" width="230">
@@ -59,8 +58,8 @@ _An example of clustering on Body pose points_
 - Centre: Clusters
 - Right: Cluster Centroids replacing the keypoints
 
-Refer data_visualization.py
+### Classification Model Training and Evaluation
 
-### Model training and Evaluation
+Follow the instructions in `best_models.py` to train and evaluate the best-performing model on WLASL1000.
 
-Follow instructions in best_models.py
+For training and evaluating the models on WLASL200, follow the `Classification_using_mediapipe_spectral.ipynb` notebook. The output in this notebook corresponds to the results obtained from using MediaPipe as the KPE method and Spectral Clustering for Standardization. 
