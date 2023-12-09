@@ -5,3 +5,5 @@ mediapipe
 tensorflow
 scikit-learn
 tqdm
+plotly
+math
