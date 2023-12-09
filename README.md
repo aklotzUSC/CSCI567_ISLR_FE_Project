@@ -1,4 +1,4 @@
-# IMPROVING DYNAMIC GESTURE FEATURE EXTRACTION FOR WORD LEVEL AMERICAN SIGN LANGUAGE RECOGNITION
+# Improving Dynamic Gesture Feature Extraction for Word Level American Sign Language Recognition
 
 ## Abstract
 
@@ -10,6 +10,8 @@ models to see if they can mitigate these problems. We research the effects of
 clustering the data, performing dimensionality reduction, and data augmentation.
 Among those methods, standardization through clustering can potentially signifi-
 cantly increase a model’s performance._
+
+## Getting Started
 
 Start by running `pip install -r requirements.txt` to install requirements.
 
