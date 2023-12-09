@@ -47,10 +47,11 @@ Both openpose_keypoints.py and mediapipe_keypoints.py process videos for the top
 Follow instructions in clustering.py, obtain X_train_flat, X_test_flat, X_train_cood, X_test_cood, y_train and y_test
 
 <p align="center">
-      <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/1.2orig.png" align="left">
-      <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/2.2clus.png">
-      <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/3.2cent.png" align="right">
+  <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/1.2orig.png" align="left" width="200">
+  <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/2.2clus.png" width="200">
+  <img src="https://github.com/aklotzUSC/CSCI567_ISLR_FE_Project/blob/main/Images/3.2cent.png" align="right" width="200">
 </p>
+
 
 _An example of clustering on Body pose points_
 
